@@ -5,17 +5,14 @@ import {
   MathUtils,
   Vector2,
 } from 'three'
-import { SpotLightProps, useFrame } from '@react-three/fiber'
+import { useFrame } from '@react-three/fiber'
 import { SpotLight } from '@react-three/drei'
 import { useControls } from 'leva'
 
 const { lerp } = MathUtils
 const TRAVEL_DISTANCE = new Vector2(4, 2)
 
-export default function Light({
-  lookAt,
-  ...restProps
-}: SpotLightProps & { lookAt: Vector3 }) {
+export default function Light({ lookAt, ...restProps }: { lookAt: Vector3 }) {
   const ref = useRef<TSpotLight>(null)
 
   const levaProps = useControls('Light', {
@@ -82,7 +79,6 @@ export default function Light({
   })
 
   return (
-    // @ts-ignore SpotLight type is broken
     <SpotLight
       ref={ref}
       castShadow
