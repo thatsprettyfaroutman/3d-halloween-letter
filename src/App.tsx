@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { useSpringValue } from 'react-spring'
 import { PresentationControls } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
+import { EffectComposer, Noise } from '@react-three/postprocessing'
 import chroma from 'chroma-js'
 import Poster from '@/components/Poster'
 import Light from '@/components/Light'
@@ -71,6 +72,10 @@ export default function App() {
           </PresentationControls>
 
           <Glow color={BACKGROUND.brighten(1).hex()} />
+
+          <EffectComposer>
+            <Noise opacity={0.025} />
+          </EffectComposer>
         </Canvas>
       </Suspense>
 
